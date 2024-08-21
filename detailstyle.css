@@ -1,0 +1,119 @@
+/* Add styles for the header and Pokedex button */
+header {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background-color: #ffeb3b; /* Yellow background for the header */
+  border-bottom: 2px solid #ff5722; /* Orange border for the header */
+}
+
+#pokedex-btn {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: #ff5722; /* Orange background for button */
+  color: #ffffff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+#pokedex-btn:hover {
+  background-color: #e64a19; /* Darker orange for hover effect */
+}
+
+/* Existing styles for detail-container and its elements */
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e0f7fa; /* Light blue background */
+}
+
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  padding: 20px;
+  background: #ffffff; /* White background for content */
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border: 5px solid #ffeb3b; /* Yellow border to make it pop */
+}
+
+.pokemon-image {
+  margin-bottom: 20px;
+}
+
+.pokemon-image img {
+  max-width: 400px; /* Larger image size */
+  height: auto;
+  border-radius: 10px;
+  border: 5px solid #ff5722; /* Orange border around image */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pokemon-info {
+  line-height: 1.8;
+}
+
+.pokemon-info h1 {
+  font-size: 2.5rem;
+  margin: 10px 0;
+  color: #d32f2f; /* Bright red color for name */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.pokemon-info p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #1976d2; /* Bright blue color for text */
+}
+
+.pokemon-info strong {
+  color: #c2185b; /* Bright pink color for labels */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .detail-container {
+    padding: 15px;
+  }
+
+  .pokemon-image img {
+    max-width: 300px; /* Adjust image size for smaller screens */
+  }
+
+  .pokemon-info h1 {
+    font-size: 2rem;
+  }
+
+  .pokemon-info p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .detail-container {
+    padding: 10px;
+  }
+
+  .pokemon-image img {
+    max-width: 250px; /* Adjust image size for very small screens */
+  }
+
+  .pokemon-info h1 {
+    font-size: 1.5rem;
+  }
+
+  .pokemon-info p {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,108 @@
+#home-title {
+  cursor: pointer;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.pokemon-box {
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.pokemon-box img {
+  width: 100px;
+  height: 100px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+
+.filters button,
+.search-container input {
+  margin: 0 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.search-container {
+  margin: 10px 0;
+}
+
+.search-container input {
+  width: 200px;
+  padding: 5px;
+}
+
+#no-results {
+  color: red;
+  font-weight: bold;
+}
+
+button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  flex: 1 1 80px; /* Ensure buttons have a minimum width and grow if needed */
+  box-sizing: border-box;
+}
+
+button.selected {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Mobile layout adjustments */
+@media (max-width: 600px) {
+  .pokemon-box {
+    width: 80px;
+  }
+  .pokemon-box img {
+    width: 80px;
+    height: 80px;
+  }
+  .search-container input {
+    width: 150px;
+  }
+  .filters {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .filters button {
+    flex: 1 1 calc(33.333% - 10px); /* Three buttons per row */
+    box-sizing: border-box;
+    min-width: 80px; /* Set a minimum width to prevent buttons from becoming too small */
+  }
+}
+
+@media (max-width: 400px) {
+  .filters button {
+    flex: 1 1 calc(50% - 10px); /* Two buttons per row */
+    min-width: 100px; /* Set a minimum width to maintain readability */
+  }
+}
