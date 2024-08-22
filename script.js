@@ -51,7 +51,6 @@ function displaySliderFromLocalStorage() {
 
   $(".slick-container").slick({
     infinite: true,
-    dots: true,
     slidesToShow: 3,
     autoplay: true,
     autoplaySpeed: 1000,
