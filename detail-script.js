@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
       .join(", ");
     document.getElementById("pokemon-abilities").textContent = abilities;
   } else {
-    // Handle case where no Pokémon data is found
     document.body.innerHTML = "<h1>No Pokémon data available</h1>";
   }
 });

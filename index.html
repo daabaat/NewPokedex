@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokédex</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    />
   </head>
   <body>
     <h1 id="home-title">Pokédex</h1>
@@ -14,11 +25,14 @@
     <div class="search-container">
       <input type="text" id="search-input" placeholder="Search Pokémon..." />
     </div>
+    <div class="slick-container"></div>
+
     <div class="container" id="pokemon-container">
       <!-- Pokémon boxes will be dynamically added here -->
     </div>
     <p id="no-results" style="display: none">Pokémon not found</p>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </body>
 </html>

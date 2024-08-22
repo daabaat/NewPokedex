@@ -4,6 +4,7 @@ const filterButtons = document.getElementById("filter-buttons");
 const homeTitle = document.getElementById("home-title");
 const searchInput = document.getElementById("search-input");
 const noResultsMessage = document.getElementById("no-results");
+const slickContainer = document.querySelector(".slick-container");
 
 // 모든 포켓몬 데이터를 저장할 배열
 let allPokemon = [];
@@ -14,6 +15,53 @@ let currentFilter = "";
 // 현재 검색어
 let searchQuery = "";
 
+// 포켓몬 이미지를 localStorage에 저장하는 함수
+function storePokemonImages(pokemonList) {
+  pokemonList.forEach((pokemon) => {
+    fetch(pokemon.url)
+      .then((response) => response.json())
+      .then((data) => {
+        // 이미지 URL을 localStorage에 저장
+        localStorage.setItem(pokemon.name, data.sprites.front_default);
+      });
+  });
+}
+
+// localStorage에서 이미지를 가져와 슬라이더를 초기화하는 함수
+function displaySliderFromLocalStorage() {
+  slickContainer.innerHTML = ""; // 슬라이더 컨테이너 초기화
+
+  // localStorage에서 모든 포켓몬 이미지를 가져옴
+  for (let i = 0; i < localStorage.length; i++) {
+    const pokemonName = localStorage.key(i);
+    const imageUrl = localStorage.getItem(pokemonName);
+
+    // 이미지 요소 생성
+    const slickImg = document.createElement("img");
+    slickImg.src = imageUrl;
+
+    // 슬라이더 컨테이너에 이미지 추가
+    slickContainer.appendChild(slickImg);
+  }
+
+  // 슬라이더 초기화
+  if ($(".slick-container").hasClass("slick-initialized")) {
+    $(".slick-container").slick("unslick");
+  }
+
+  $(".slick-container").slick({
+    infinite: true,
+    dots: true,
+    slidesToShow: 3,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    centerMode: true,
+    customPaging: function (slider, i) {
+      return '<button class="custom-dot">' + (i + 1) + "</button>";
+    },
+  });
+}
+
 // 1세대 포켓몬 데이터를 API로부터 가져오는 비동기 함수
 async function fetchPokemonData() {
   // 포켓몬 데이터를 API에서 가져옴
@@ -21,10 +69,16 @@ async function fetchPokemonData() {
   const data = await response.json();
   // 가져온 포켓몬 데이터를 allPokemon 배열에 저장
   allPokemon = data.results;
+
+  // 포켓몬 이미지들을 localStorage에 저장
+  storePokemonImages(allPokemon);
+
   // 모든 포켓몬을 화면에 표시
   displayPokemon(allPokemon);
   // 알파벳 필터 버튼들을 생성
   createFilterButtons();
+  // localStorage에서 슬라이더를 초기화
+  displaySliderFromLocalStorage();
 }
 
 // 포켓몬 목록을 화면에 표시하는 함수
@@ -83,21 +137,6 @@ function createFilterButtons() {
     // 생성된 버튼을 필터 버튼 컨테이너에 추가
     filterButtons.appendChild(button);
   });
-
-  // 홈 타이틀을 클릭하면 초기 상태로 돌아가는 기능을 추가
-  homeTitle.onclick = () => {
-    // 검색 입력창을 초기화
-    searchInput.value = "";
-    searchQuery = "";
-    currentFilter = "";
-    filteredPokemon = [];
-    // 모든 포켓몬을 화면에 다시 표시
-    displayPokemon(allPokemon);
-    // 모든 필터 버튼에서 'selected' 클래스를 제거
-    document
-      .querySelectorAll("#filter-buttons button")
-      .forEach((btn) => btn.classList.remove("selected"));
-  };
 }
 
 // 특정 알파벳으로 포켓몬을 필터링하는 함수
